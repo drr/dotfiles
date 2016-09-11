@@ -1,0 +1,7 @@
+[user]
+	name = David R. Richardson
+	email = drr@drrlabs.com
+[core]
+	editor = vim
+	excludesfile = /home/drr/.gitignore
+	autocrlf = input

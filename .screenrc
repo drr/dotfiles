@@ -1,0 +1,5 @@
+defscrollback 2000
+startup_message off
+vbell off
+caption always %w%=%l
+obuflimit 1024
