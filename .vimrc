@@ -4,11 +4,8 @@ set ignorecase
 set nowrapscan
 set number
 
+set tabstop=4
 set shiftwidth=4
-set softtabstop=4
-set expandtab       "expand tabs to spaces
-set textwidth=72
-set autoindent      "will generally be overridden by the filetype indent
 
 " Experiment with these features
 set nocompatible    "use vim defaults
@@ -31,6 +28,10 @@ else
     set background=light
     colorscheme desert
 endif
+
+call plug#begin()
+Plug 'fatih/vim-go'
+call plug#end()
 
 
 "From $VIMRUNTIME/vimrc_example.vim
@@ -65,6 +66,8 @@ else
 
   set autoindent		" always set autoindenting on
   set textwidth=72
+  set expandtab       "expand tabs to spaces
+  set softtabstop=4
 
 endif " has("autocmd")
 
