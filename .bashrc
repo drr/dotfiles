@@ -4,7 +4,10 @@ alias dotfiles='git --git-dir=$HOME/.dotfilesgit --work-tree=$HOME'
 HISTSIZE=5000
 export GOPATH=~/gows
 PATH=$PATH:$GOPATH/bin
+if [ -z "$SSH_CLIENT" ]; then
+	PS1='\[\033[34m\]\! \W\$\[\033[0m\] '
+else
+	PS1='\[\033[34m\]\! \u@\h:\W\$\[\033[0m\] '
+fi
 #unset HISTFILE
-#PS1="\W:; "
-#PS1='\[\033[34m\]\! \h:\W\$ \[\033[0m\] '
 IGNOREEOF=
