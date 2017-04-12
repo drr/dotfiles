@@ -19,14 +19,15 @@ set showmatch       "show matching brackets
 "set list           "show tabs and trailing charaters
 
 syntax enable
+colorscheme desert
 
 " Use the solarized color scheme https://github.com/altercation/vim-colors-solarized
 if has('gui_running')
-    set background=dark
-    colorscheme solarized
-else
     set background=light
-    colorscheme desert
+    colorscheme solarized
+endif
+if exists('$ITERM_PROFILE')
+    colorscheme solarized
 endif
 
 call plug#begin()
