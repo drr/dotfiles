@@ -20,6 +20,7 @@ set showmatch       "show matching brackets
 
 syntax enable
 colorscheme desert
+set mouse=a			"TODO: investigate other modes
 
 " Use the solarized color scheme https://github.com/altercation/vim-colors-solarized
 if has('gui_running')
