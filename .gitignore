@@ -1,3 +1,7 @@
 *.swp
 .DS_Store
 .dotfilesgit
+.zcompdump*
+.viminfo
+.zsh_history
+.zsh_sessions/

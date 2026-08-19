@@ -1,3 +1,17 @@
 [user]
 	name = David R. Richardson
 	email = drr@drrlabs.com
+[init]
+	defaultBranch = main
+[core]
+	editor = nvim
+[pull]
+	rebase = false
+[push]
+	autoSetupRemote = true
+[fetch]
+	prune = true
+[credential]
+	helper = osxkeychain
+[color]
+	ui = auto

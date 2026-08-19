@@ -1,0 +1,7 @@
+font-family = SF Mono
+font-size = 13
+
+theme = light:GitHub Light Default,dark:GitHub Dark Default
+
+mouse-hide-while-typing = true
+copy-on-select = true
