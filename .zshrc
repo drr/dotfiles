@@ -1,5 +1,7 @@
 
-eval "$(direnv hook zsh)"
+if type direnv &>/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
 
 alias l="ls -aFG"
 alias h="history 10"
