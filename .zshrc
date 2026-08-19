@@ -74,7 +74,7 @@ else
   _prompt_userhost=''
 fi
 
-PROMPT='${_prompt_userhost}%F{blue}%2~%f${vcs_info_msg_0_} %(!.%B%F{red}#%f%b.%#) '
+PROMPT='${_prompt_userhost}%S %2~ %s${vcs_info_msg_0_} %(!.%B%F{red}#%f%b.%#) '
 
 # NVM (Node Version Manager) — lazy-loaded. Sourcing nvm.sh eagerly on every
 # shell startup costs ~300ms per new tab; these stubs defer that cost to the
