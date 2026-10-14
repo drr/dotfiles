@@ -5,3 +5,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 if type rbenv &>/dev/null; then
   eval "$(rbenv init - --no-rehash zsh)"
 fi
+
+# Personal scripts, ahead of Homebrew and system dirs. `typeset -U` keeps
+# PATH free of duplicates when a login shell is nested.
+typeset -U path
+path=(~/bin $path)
