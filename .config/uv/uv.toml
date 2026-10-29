@@ -1,0 +1,15 @@
+# User-level uv settings: apply to every project and tool unless the project overrides them.
+
+# Cooldown: ignore anything uploaded to PyPI in the last two weeks, so a hijacked release has time to be noticed and
+# pulled before it can land here. Locks record the span, not a date, so they stay stable.
+exclude-newer = "14 days"
+
+# Source builds (a package's own code running at install time, Python's equivalent of npm install scripts) are blocked
+# per project with `[tool.uv] no-build = true` where every dependency ships a wheel. Not here: `uv tool install` of a
+# local project counts as a source build and can't override this file.
+
+# Security fixes taken inside the cooldown. Each entry lets that one package through up to the given time; delete it
+# once the fix is older than the cooldown.
+[exclude-newer-package]
+certifi = "2026-10-21T00:00:00Z" # 2026.10.19 (2026-10-20): drops the compromised emSign chain (GHSA-6q48-6c7w-9gw2)
+pillow = "2026-10-17T00:00:00Z"  # 13.0.0 (2026-10-16): CVE-2026-112900, -112393, -112403 (critical)

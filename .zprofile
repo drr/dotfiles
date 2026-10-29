@@ -8,5 +8,8 @@ fi
 
 # Personal scripts, ahead of Homebrew and system dirs. `typeset -U` keeps
 # PATH free of duplicates when a login shell is nested.
+# ~/.local/bin (the standard per-user bin) holds uv's python3/python
+# (`uv python install 3.14 --default`; patched by `uv python upgrade`) and
+# `uv tool install` commands, ahead of Apple's end-of-life /usr/bin/python3.
 typeset -U path
-path=(~/bin $path)
+path=(~/bin ~/.local/bin $path)
