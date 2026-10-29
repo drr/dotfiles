@@ -78,19 +78,23 @@ fi
 
 PROMPT='${_prompt_userhost}%S %2~ %s${vcs_info_msg_0_} %(!.%B%F{red}#%f%b.%#) '
 
-# NVM (Node Version Manager) — lazy-loaded. Sourcing nvm.sh eagerly on every
-# shell startup costs ~300ms per new tab; these stubs defer that cost to the
-# first time node/npm/npx/nvm is actually run in a given shell.
+# Node: interactive node/npm/npx are Homebrew's (/opt/homebrew/bin, kept patched
+# by `brew upgrade`). nvm only stores the versions projects pin; projects run
+# them by absolute path (~/.nvm/versions/node/vX.Y.Z/bin), never through PATH.
+# nvm's default alias is `system`, so loading it never puts an old node on PATH.
+# See ~/ws/dev-audit.
+# nvm is lazy-loaded: sourcing nvm.sh costs ~300ms per new tab, so this stub
+# loads it on the first `nvm` call. It carries the whole load inline rather
+# than calling a shared helper: tools that copy shell functions (Claude Code's
+# shell snapshot skips names starting with "_") would keep the stub, drop the
+# helper, and the stub would then call itself until FUNCNEST.
 export NVM_DIR="$HOME/.nvm"
-_nvm_lazy_load() {
-  unset -f nvm node npm npx
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+nvm() {
+  unset -f nvm
+  [ -s /opt/homebrew/opt/nvm/nvm.sh ] && . /opt/homebrew/opt/nvm/nvm.sh
+  [ -s /opt/homebrew/opt/nvm/etc/bash_completion.d/nvm ] && . /opt/homebrew/opt/nvm/etc/bash_completion.d/nvm
+  nvm "$@"
 }
-nvm()  { _nvm_lazy_load; nvm "$@"; }
-node() { _nvm_lazy_load; node "$@"; }
-npm()  { _nvm_lazy_load; npm "$@"; }
-npx()  { _nvm_lazy_load; npx "$@"; }
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
