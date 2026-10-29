@@ -82,7 +82,6 @@ PROMPT='${_prompt_userhost}%S %2~ %s${vcs_info_msg_0_} %(!.%B%F{red}#%f%b.%#) '
 # by `brew upgrade`). nvm only stores the versions projects pin; projects run
 # them by absolute path (~/.nvm/versions/node/vX.Y.Z/bin), never through PATH.
 # nvm's default alias is `system`, so loading it never puts an old node on PATH.
-# See ~/ws/dev-audit.
 # nvm is lazy-loaded: sourcing nvm.sh costs ~300ms per new tab, so this stub
 # loads it on the first `nvm` call. It carries the whole load inline rather
 # than calling a shared helper: tools that copy shell functions (Claude Code's
