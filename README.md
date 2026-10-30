@@ -16,6 +16,7 @@ The dotfiles assume Homebrew at `/opt/homebrew`. Then:
 
 ```sh
 brew install neovim node nvm uv # vi/vim/$EDITOR are nvim; the shell's node is Homebrew's
+brew install go                 # if you build Go projects
 brew install glow fzf           # optional: :MarkdownPreview and <C-p> in Neovim
 nvm alias default system        # in a new shell (nvm is lazy-loaded); keeps nvm off PATH
 uv python install 3.14 --default  # the shell's python3/python, in ~/.local/bin
@@ -30,5 +31,9 @@ Python: everything goes through uv. `python3`/`python` in the shell are uv's 3.1
 ahead of Apple's end-of-life `/usr/bin/python3`, which Xcode keeps). Projects pin a minor line in `.python-version`
 and get their interpreter from uv; `uv python upgrade` installs new patch releases for the shell and every project.
 `~/.config/uv/uv.toml` sets a 14-day cooldown on new PyPI uploads, with commented exceptions for urgent fixes.
+
+Go: Homebrew's `go`, patched by `brew upgrade`. `.zprofile` exports `GOTOOLCHAIN=local`, so a go.mod that asks for
+a newer Go stops the build with a message instead of silently downloading another toolchain from the module proxy;
+`brew upgrade go` is the fix. Projects' Makefiles check that the active Go is at or above its line's patched floor.
 
 rbenv and direnv are optional: their hooks run only if they're installed.

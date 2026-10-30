@@ -13,3 +13,9 @@ fi
 # `uv tool install` commands, ahead of Apple's end-of-life /usr/bin/python3.
 typeset -U path
 path=(~/bin ~/.local/bin $path)
+
+# Go: always use Homebrew's go (patched by `brew upgrade`). With the default
+# GOTOOLCHAIN=auto, a go.mod asking for a newer Go makes the go command
+# download that toolchain from the module proxy, outside Homebrew; with local
+# the build stops and says which version it needs.
+export GOTOOLCHAIN=local
