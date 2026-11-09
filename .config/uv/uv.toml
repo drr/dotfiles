@@ -10,6 +10,3 @@ exclude-newer = "14 days"
 
 # Security fixes taken inside the cooldown. Each entry lets that one package through up to the given time; delete it
 # once the fix is older than the cooldown.
-[exclude-newer-package]
-certifi = "2026-10-21T00:00:00Z" # 2026.10.19 (2026-10-20): drops the compromised emSign chain (GHSA-6q48-6c7w-9gw2)
-pillow = "2026-10-17T00:00:00Z"  # 13.0.0 (2026-10-16): CVE-2026-112900, -112393, -112403 (critical)
